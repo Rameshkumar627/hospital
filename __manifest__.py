@@ -40,6 +40,8 @@
         "security/ir.model.access.csv",
 
         "sequence/base.xml",
+        "sequence/testing.xml",
+        "sequence/am_hospital.xml",
 
         # Base
         "views/base/patient.xml",
