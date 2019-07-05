@@ -22,7 +22,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Base : arc.patient -->
@@ -33,7 +33,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
         
         <!-- Billing : arc.order -->
@@ -44,7 +44,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Billing : arc.invoice.treatment -->
@@ -55,7 +55,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Billing : arc.invoice.pharmacy -->
@@ -66,7 +66,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Billing : arc.invoice.purchase -->
@@ -77,7 +77,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Billing : arc.payment -->
@@ -88,7 +88,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- IPD : arc.admission -->
@@ -99,7 +99,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- IPD : arc.discharge -->
@@ -110,7 +110,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- IPD : ipd.treatment -->
@@ -121,7 +121,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- IPD : ipd.treatment.detail -->
@@ -132,7 +132,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- OPD : arc.appointment -->
@@ -143,7 +143,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- OPD : general.treatment -->
@@ -154,7 +154,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- OPD : arc.prescription -->
@@ -165,7 +165,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Operation : patient.operation -->
@@ -176,7 +176,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Product : arc.product -->
@@ -187,7 +187,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Base : stock.move -->
@@ -198,7 +198,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Base : stock.adjust -->
@@ -209,7 +209,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Base : stock.block -->
@@ -220,7 +220,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Base : stock.scrap -->
@@ -231,7 +231,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
         <!-- Ward : patient.shifting -->
@@ -242,7 +242,7 @@
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id">2</field>
+            <field name="company_id">3</field>
         </record>
 
     </data>
