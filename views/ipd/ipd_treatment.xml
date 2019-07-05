@@ -44,8 +44,8 @@
                     <field name="treatment_detail">
                         <tree editable="bottom">
                             <field name="date"/>
-                            <field name="diagnosis_ids"/>
-                            <field name="treatment_ids"/>
+                            <field name="diagnosis_ids" widget="many2many_tags"/>
+                            <field name="treatment_ids" widget="many2many_tags"/>
                             <field name="comment"/>
                         </tree>
                     </field>
