@@ -39,8 +39,8 @@
                     <h2><field name="name"/></h2>
                     <group col="4">
                         <field name="date" attrs="{'readonly': [('progress', '!=', 'draft')]}"/>
-                        <field name="person_id" attrs="{'readonly': [('progress', '!=', 'draft')]}" string="Patient"/>
-                        <field name="payment_progress" string="Payment Status"/>
+                        <field name="person_id" attrs="{'readonly': [('progress', '!=', 'draft')]}" string="Patient" domain="[('is_patient', '=', True)]"/>
+                        <field name="payment_progress" string="Payment Status" attrs="{'invisible': [('progress', '!=', 'approved')]}"/>
                         <field name="invoice_type" invisible="1"/>
                     </group>
                     <notebook>
