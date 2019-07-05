@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_hr_category_tree" model="ir.ui.view">
+        <field name="name">hr.category.tree</field>
+        <field name="model">hr.category</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Category">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_hr_category_form" model="ir.ui.view">
+        <field name="name">hr.category.form</field>
+        <field name="model">hr.category</field>
+        <field name="arch" type="xml">
+            <form string="Employee Category">
+                <sheet>
+                    <group col="4">
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_hr_category" model="ir.actions.act_window">
+        <field name="name">Employee Category</field>
+        <field name="res_model">hr.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

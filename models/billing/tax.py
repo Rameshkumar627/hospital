@@ -9,6 +9,8 @@ class ProductTax(models.Model):
     name = fields.Char(string="Name", required=True)
     tax_uid = fields.Char(string="Code", required=True)
     rate = fields.Float(string="Rate", default=0.0, required=True)
+    company_id = fields.Many2one(comodel_name="res.company", string="Company",
+                                 default=lambda self: self.env.user.company_id.id)
 
     @api.multi
     def name_get(self):

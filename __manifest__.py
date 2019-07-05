@@ -56,6 +56,7 @@
         "views/contact/service.xml",
 
         # General
+        "views/general/hr_category.xml",
 
         # Reception
         "views/reception/doctor_availability.xml",
