@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_doctor_availability_tree" model="ir.ui.view">
+        <field name="name">doctor.availability.tree</field>
+        <field name="model">doctor.availability</field>
+        <field name="arch" type="xml">
+            <tree string="Doctor Availability">
+                <field name="from_date"/>
+                <field name="till_date"/>
+                <field name="doctor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_doctor_availability_form" model="ir.ui.view">
+        <field name="name">doctor.availability.form</field>
+        <field name="model">doctor.availability</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Availability">
+                <sheet>
+                    <group col="4">
+                        <field name="from_date"/>
+                        <field name="till_date"/>
+                        <field name="doctor_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- calendar -->
+    <record id="view_doctor_availability_calendar" model="ir.ui.view">
+        <field name="name">doctor.availability.calendar</field>
+        <field name="model">doctor.availability</field>
+        <field name="arch" type="xml">
+            <calendar string="Doctor Availability"
+                      color="doctor_id"
+                      date_start="from_date"
+                      date_stop="till_date"
+                      mode="month"
+                      quick_add="False" create="false" edit="false" delete="false">
+                <field name="doctor_id"/>
+            </calendar>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_doctor_availability" model="ir.actions.act_window">
+        <field name="name">Doctor Availability</field>
+        <field name="res_model">doctor.availability</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">calendar,tree,form</field>
+    </record>
+
+</odoo>

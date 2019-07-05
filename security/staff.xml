@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+        <record model="ir.rule" id="hospital_doctor_availability">
+            <field name="name">Doctor Availability</field>
+            <field name="model_id" ref="model_doctor_availability"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_doctor_timings">
+            <field name="name">Doctor Timings</field>
+            <field name="model_id" ref="model_doctor_timings"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_timings_detail">
+            <field name="name">Timings Detail</field>
+            <field name="model_id" ref="model_timings_detail"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_arc_notes">
+            <field name="name">Notes</field>
+            <field name="model_id" ref="model_arc_notes"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_arc_reminder">
+            <field name="name">Reminder</field>
+            <field name="model_id" ref="model_arc_reminder"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+    </data>
+
+</odoo>

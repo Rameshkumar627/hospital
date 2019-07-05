@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_person_tree" model="ir.ui.view">
+        <field name="name">arc.person.person.tree</field>
+        <field name="model">arc.person</field>
+        <field name="arch" type="xml">
+            <tree string="Contact">
+                <field name="name"/>
+                <field name="person_uid"/>
+                <field name="email"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_person_form" model="ir.ui.view">
+        <field name="name">arc.person.person.form</field>
+        <field name="model">arc.person</field>
+        <field name="arch" type="xml">
+            <form string="Contact">
+                <sheet>
+                    <div>
+                        <field name="image" widget="image" class="oe_avatar oe_left" modifiers="{}"/>
+                    </div>
+                    <div style="margin-left: 100px;">
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" class="oe_inline" modifiers="{'required': true}"/>
+                            </h1>
+                            <h2><field name="person_uid"/></h2>
+                        </div>
+                    </div>
+                    <group>
+
+                        <!--Contact Detail-->
+                        <group string="Contact Detail">
+                            <field name="contact_name"/>
+                            <field name="email"/>
+                            <field name="mobile"/>
+                            <field name="phone"/>
+                            <field name="whatsapp"/>
+                            <field name="person_type"/>
+                        </group>
+
+                        <!--Address-->
+                        <group string="Address">
+                            <field name="door_no" style="width: 30%" placeholder="Door No..."/>
+                            <field name="building_name" style="width: 70%" placeholder="Building name..."/>
+                            <field name="street_1" placeholder="Street 1..."/>
+                            <field name="street_2" placeholder="Street 2..."/>
+                            <field name="locality" placeholder="Locality..."/>
+                            <field name="city" placeholder="City..."/>
+                            <field name="landmark" placeholder="Landmark..."/>
+                            <field name="country_id" style="width: 45%" placeholder="Country" options="{'create': false, 'create_edit': false}" modifiers="{}"/>
+                            <field name="state_id" style="width: 55%" options="{'create': false, 'create_edit': false}" placeholder="State" modifiers="{}"/>
+                            <field name="pin_code" placeholder="ZIP" style="width: 55%"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban -->
+    <record id="view_arc_person_kanban" model="ir.ui.view">
+        <field name="name">arc.person.person.kanban</field>
+        <field name="model">arc.person</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image"/>
+                <field name="name"/>
+                <field name="person_uid"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click card">
+                            <div class="card-content-small">
+
+                                <!-- Header -->
+                                <div class="card-content-small-image">
+                                    <t t-if="record.image.value">
+                                        <img t-attf-src="data:image/png;base64, #{record.image.value}" class="oe_module_icon"/>
+                                    </t>
+                                </div>
+
+                                <!-- Content-->
+                                <table>
+                                    <tr><th>Name</th><td>&#160;&#160;<field name="name"/></td></tr>
+                                    <tr><th>ID</th><td>&#160;&#160;<field name="person_uid"/></td></tr>
+                                    <tr><th>Mobile  </th><td>&#160;&#160;<field name="mobile"/></td></tr>
+                                    <tr><th>Phone</th><td>&#160;&#160;<field name="phone"/></td></tr>
+                                    <tr><th>Website</th><td>&#160;&#160;<field name="website"/></td></tr>
+                                </table>
+                                <!--<div class="card-content">-->
+                                    <!--<div class="card-content__username">Name : <field name="name"/></div>-->
+                                    <!--<div class="card-content__username">ID : <field name="person_uid"/></div>-->
+                                    <!--<div class="card-content__bio">Mobile : <field name="mobile"/></div>-->
+                                    <!--<div class="card-content__bio">Phone : <field name="phone"/></div>-->
+                                    <!--<div class="card-content__bio">Email : <field name="email"/></div>-->
+                                <!--</div>-->
+                            </div>
+
+                            <!-- Footer-->
+                            <div class="card-footer">
+                                <div class="card-footer__pens">
+                                    <span><field name="email"/></span> <div class="label">Email</div>
+                                </div>
+                                <div class="card-footer__pens">
+                                    <span><field name="mobile"/></span> <div class="label">Mobile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+              </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action Staff-->
+    <record id="action_arc_person" model="ir.actions.act_window">
+        <field name="name">Person</field>
+        <field name="res_model">arc.person</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_arc_person_tree"/>
+        <field name="help">Click create to add new supplier's/ Service</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_person_form">
+        <field eval="3" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_arc_person_form" />
+        <field name="act_window_id" ref="action_arc_person"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_person_tree">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_arc_person_tree"/>
+        <field name="act_window_id" ref="action_arc_person"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_person_kanban">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_arc_person_kanban"/>
+        <field name="act_window_id" ref="action_arc_person"/>
+    </record>
+
+</odoo>

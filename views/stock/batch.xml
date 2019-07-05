@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_batch_tree" model="ir.ui.view">
+        <field name="name">arc.batch.tree</field>
+        <field name="model">arc.batch</field>
+        <field name="arch" type="xml">
+            <tree string="Batch">
+                <field name="product_id"/>
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="manufacturing_date"/>
+                <field name="expiry_date"/>
+                <field name="unit_price"/>
+                <field name="mrp"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_batch_form" model="ir.ui.view">
+        <field name="name">arc.batch.form</field>
+        <field name="model">arc.batch</field>
+        <field name="arch" type="xml">
+            <form string="Batch">
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="product_id"/>
+                        <field name="manufacturing_date"/>
+                        <field name="expiry_date"/>
+                        <field name="unit_price"/>
+                        <field name="mrp"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_batch" model="ir.actions.act_window">
+        <field name="name">Batch</field>
+        <field name="res_model">arc.batch</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

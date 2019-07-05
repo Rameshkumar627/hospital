@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Menu : Contact-->
+    <menuitem id="hospital_contact" name="Contact" sequence="10" web_icon="hospital,static/src/image/telephone.jpg"/>
+    <menuitem id="hospital_contact_patient" name="Patient" action="action_arc_person_patient" parent="hospital_contact" sequence="10"/>
+    <menuitem id="hospital_contact_staff" name="Staff" action="action_arc_person_staff" parent="hospital_contact" sequence="20"/>
+    <menuitem id="hospital_contact_supplier" name="Supplier" action="action_arc_person_supplier" parent="hospital_contact" sequence="30"/>
+    <menuitem id="hospital_contact_service" name="Service" action="action_arc_person_service" parent="hospital_contact" sequence="40"/>
+
+
+    <!--Menu : Reception-->
+    <menuitem id="hospital_reception" name="Reception" sequence="20" web_icon="hospital,static/src/image/reception.jpg"/>
+    <menuitem id="hospital_reception_contact" name="Contact" parent="hospital_reception" sequence="10"/>
+    <menuitem id="hospital_reception_contact_patient" name="Patient" action="action_arc_person_patient" parent="hospital_reception_contact" sequence="10"/>
+    <menuitem id="hospital_reception_contact_staff" name="Staff" action="action_arc_person_staff" parent="hospital_reception_contact" sequence="20"/>
+    <menuitem id="hospital_reception_contact_supplier" name="Supplier" action="action_arc_person_supplier" parent="hospital_reception_contact" sequence="30"/>
+    <menuitem id="hospital_reception_contact_service" name="Service" action="action_arc_person_service" parent="hospital_reception_contact" sequence="40"/>
+
+    <menuitem id="hospital_reception_appointment" name="Appointment" action="action_arc_appointment" parent="hospital_reception" sequence="20"/>
+    <menuitem id="hospital_reception_doctor_avail" name="Doctor Availability" action="action_doctor_availability" parent="hospital_reception" sequence="30"/>
+    <menuitem id="hospital_reception_doctor_time" name="Doctor Timings" action="action_doctor_timings" parent="hospital_reception" sequence="40"/>
+    <menuitem id="hospital_reception_notes" name="Notes" action="action_arc_notes" parent="hospital_reception" sequence="50"/>
+    <menuitem id="hospital_reception_reminder" name="Reminder" action="action_arc_reminder" parent="hospital_reception" sequence="60"/>
+
+    <menuitem id="hospital_reception_register" name="Register" parent="hospital_reception" sequence="70"/>
+    <menuitem id="hospital_reception_register_patient" name="Patient" action="action_arc_patient" parent="hospital_reception_register" sequence="10"/>
+    <menuitem id="hospital_reception_register_person" name="Person" action="action_arc_person" parent="hospital_reception_register" sequence="20"/>
+    <menuitem id="hospital_reception_register_staff" name="Staff" action="action_arc_employee" parent="hospital_reception_register" sequence="30"/>
+
+    <!--Menu : OPD-->
+    <menuitem id="hospital_out" name="OPD" sequence="30" web_icon="hospital,static/src/image/out_patient.jpg"/>
+    <menuitem id="hospital_out_patient" name="Patient" action="action_arc_person_patient" parent="hospital_out" sequence="10"/>
+    <menuitem id="hospital_out_appointment" name="Appointment" action="action_arc_appointment" parent="hospital_out" sequence="20"/>
+    <menuitem id="hospital_out_treatment" name="Treatment" action="action_general_treatment" parent="hospital_out" sequence="30"/>
+    <menuitem id="hospital_out_prescription" name="Prescription" action="action_arc_prescription_opd" parent="hospital_out" sequence="40"/>
+    <menuitem id="hospital_out_clinical_notes" name="Clinical Notes" action="action_clinical_notes" parent="hospital_out" sequence="50"/>
+
+
+    <!--Menu : IPD-->
+    <menuitem id="hospital_in" name="IPD" sequence="40" web_icon="hospital,static/src/image/ipd.jpg"/>
+    <menuitem id="hospital_in_admission" name="Admission" action="action_arc_admission" parent="hospital_in" sequence="10"/>
+    <menuitem id="hospital_in_patient" name="Patient" action="action_arc_person_patient" parent="hospital_in" sequence="20"/>
+    <menuitem id="hospital_in_treatment" name="Treatment" action="action_ipd_treatment" parent="hospital_in" sequence="30"/>
+    <menuitem id="hospital_in_prescription" name="Prescription" action="action_arc_prescription_ipd" parent="hospital_in" sequence="40"/>
+    <menuitem id="hospital_in_clinical_notes" name="Clinical Notes" action="action_clinical_notes" parent="hospital_in" sequence="50"/>
+    <menuitem id="hospital_in_discharge" name="Discharge" action="action_arc_discharge" parent="hospital_in" sequence="60"/>
+    <menuitem id="hospital_in_ward" name="Ward" action="action_arc_ward" parent="hospital_in" sequence="70"/>
+
+
+    <!--Menu : Operation-->
+    <menuitem id="hospital_ot" name="Operation" sequence="50" web_icon="hospital,static/src/image/operation.jpg"/>
+    <menuitem id="hospital_ot_operation" name="Operation" action="action_patient_operation" parent="hospital_ot" sequence="10"/>
+    <menuitem id="hospital_ot_status" name="OT Status" action="action_patient_operation_ot_status" parent="hospital_ot" sequence="20"/>
+    <menuitem id="hospital_ot_theater" name="Operation Theater" action="action_operation_theater" parent="hospital_ot" sequence="30"/>
+    <menuitem id="hospital_ot_procedure" name="Operation Procedure" action="action_arc_operation" parent="hospital_ot" sequence="40"/>
+
+
+    <!--Menu : Billing-->
+    <menuitem id="hospital_billing" name="Patient Billing" sequence="60" web_icon="hospital,static/src/image/billing.jpg"/>
+    <menuitem id="hospital_billing_invoice" name="Invoice" action="action_arc_invoice_patient" parent="hospital_billing" sequence="10"/>
+    <menuitem id="hospital_billing_payment" name="Payment" action="action_arc_payment" parent="hospital_billing" sequence="20"/>
+    <menuitem id="hospital_billing_tax" name="Tax" action="action_product_tax" parent="hospital_billing" sequence="30"/>
+
+
+    <!--Menu : Pharmacy-->
+    <menuitem id="hospital_pharmacy" name="Pharmacy" sequence="70" web_icon="hospital,static/src/image/pharmacy.jpg"/>
+    <menuitem id="hospital_pharmacy_pharmacy" name="Pharmacy" action="action_arc_invoice_pharmacy" parent="hospital_pharmacy" sequence="10"/>
+
+    <menuitem id="hospital_pharmacy_product" name="Product" parent="hospital_pharmacy" sequence="20"/>
+    <menuitem id="hospital_pharmacy_product_product" name="Product" action="action_arc_product" parent="hospital_pharmacy_product" sequence="10"/>
+    <menuitem id="hospital_pharmacy_product_group" name="Product Group" action="action_product_group" parent="hospital_pharmacy_product" sequence="20"/>
+    <menuitem id="hospital_pharmacy_product_sub_group" name="Product Sub Group" action="action_product_sub_group" parent="hospital_pharmacy_product" sequence="30"/>
+
+    <menuitem id="hospital_pharmacy_stock" name="Stock" parent="hospital_pharmacy" sequence="30"/>
+    <menuitem id="hospital_pharmacy_stock_current" name="Current Stock" action="action_arc_product" parent="hospital_pharmacy_stock" sequence="10"/>
+    <menuitem id="hospital_pharmacy_stock_batch_wise" name="Batch-Wise Stock" action="action_arc_batch" parent="hospital_pharmacy_stock" sequence="20"/>
+    <menuitem id="hospital_pharmacy_stock_location" name="Stock Location" action="action_arc_location" parent="hospital_pharmacy_stock" sequence="30"/>
+
+    <menuitem id="hospital_pharmacy_movement" name="Stock Movement" parent="hospital_pharmacy" sequence="40"/>
+    <menuitem id="hospital_pharmacy_movement_adjust" name="Stock Adjustment" action="action_stock_adjust" parent="hospital_pharmacy_movement" sequence="10"/>
+    <menuitem id="hospital_pharmacy_movement_block" name="Blocked" action="action_stock_block" parent="hospital_pharmacy_movement" sequence="20"/>
+    <menuitem id="hospital_pharmacy_movement_scrap" name="Scraped" action="action_stock_scrap" parent="hospital_pharmacy_movement" sequence="30"/>
+    <menuitem id="hospital_pharmacy_movement_stock_move" name="Stock Move" action="action_arc_move" parent="hospital_pharmacy_movement" sequence="40"/>
+
+    <menuitem id="hospital_pharmacy_purchase" name="Purchase" parent="hospital_pharmacy" sequence="50"/>
+    <menuitem id="hospital_pharmacy_purchase_order" name="Purchase Quote" action="action_arc_order" parent="hospital_pharmacy_purchase" sequence="10"/>
+    <menuitem id="hospital_pharmacy_purchase_invoice" name="Purchase Invoice" action="action_arc_invoice_purchase" parent="hospital_pharmacy_purchase" sequence="20"/>
+
+
+    <!--Menu : Laboratory-->
+    <menuitem id="hospital_lab" name="Laboratory" sequence="80" web_icon="hospital,static/src/image/laboratory.jpg"/>
+    <menuitem id="hospital_lab_form" name="Lab-Form" action="action_arc_lab" parent="hospital_lab" sequence="10"/>
+    <menuitem id="hospital_lab_test" name="Tests" action="action_lab_test" parent="hospital_lab" sequence="20"/>
+    <menuitem id="hospital_lab_master" name="Master" action="action_lab_master" parent="hospital_lab" sequence="30"/>
+
+
+    <!--Menu : Configuration-->
+    <menuitem id="hospital_config" name="Configuration" sequence="90" web_icon="hospital,static/src/image/configuration.jpg"/>
+    <menuitem id="hospital_config_symptoms" name="Symptoms" action="action_arc_symptoms" parent="hospital_config" sequence="10"/>
+    <menuitem id="hospital_config_diagnosis" name="Diagnosis" action="action_arc_diagnosis" parent="hospital_config" sequence="20"/>
+    <menuitem id="hospital_config_treatment" name="Treatment" action="action_arc_treatment" parent="hospital_config" sequence="30"/>
+    <menuitem id="hospital_config_admission_reason" name="Admission reason" action="action_admission_reason" parent="hospital_config" sequence="40"/>
+    <menuitem id="hospital_config_discharge_reason" name="Discharge reason" action="action_discharge_reason" parent="hospital_config" sequence="40"/>
+    <menuitem id="hospital_config_appointment_reason" name="Appointment reason" action="action_appointment_reason" parent="hospital_config" sequence="40"/>
+    <menuitem id="hospital_config_appointment_type" name="Appointment Type" action="action_appointment_type" parent="hospital_config" sequence="50"/>
+    <menuitem id="hospital_config_invoice_description" name="Invoice Description" action="action_invoice_description" parent="hospital_config" sequence="60"/>
+    <menuitem id="hospital_config_template" name="Template" action="action_arc_template" parent="hospital_config" sequence="70"/>
+
+    <menuitem id="hospital_report" name="Report" sequence="100" web_icon="hospital,static/src/image/report.png"/>
+    <menuitem id="hospital_report_purchase_value" name="Purchase" sequence="10" action="action_report_purchase_value" parent="hospital_report"/>
+    <menuitem id="hospital_report_purchase_quantity" name="Purchase Item" sequence="20" action="action_report_purchase_quantity" parent="hospital_report"/>
+    <menuitem id="hospital_report_pharmacy_value" name="Pharmacy" sequence="30" action="action_report_pharmacy_value" parent="hospital_report"/>
+    <menuitem id="hospital_report_pharmacy_quantity" name="Pharmacy Item" sequence="40" action="action_report_pharmacy_quantity" parent="hospital_report"/>
+    <menuitem id="hospital_report_treatment_value" name="Treatment Bills" sequence="50" action="action_report_treatment_value" parent="hospital_report"/>
+    <menuitem id="hospital_report_payment" name="Payment" sequence="60" action="action_report_payment" parent="hospital_report"/>
+    <menuitem id="hospital_report_current_stock" name="Current Stock" sequence="70" action="action_arc_product" parent="hospital_report"/>
+    <menuitem id="hospital_report_batch_stock" name="Batch Stock" sequence="80" action="action_arc_batch" parent="hospital_report"/>
+    <menuitem id="hospital_report_stock" name="Stock" sequence="90" action="action_report_stock" parent="hospital_report"/>
+
+    <!--<menuitem id="hospital_test" name="Test" sequence="100" web_icon="hospital,static/src/image/icons.png"/>-->
+    <!--<menuitem id="hospital_test_patient" name="Patient" action="action_arc_patient" parent="hospital_test" sequence="10"/>-->
+    <!--<menuitem id="hospital_test_person" name="Person" action="action_arc_person" parent="hospital_test" sequence="10"/>-->
+    <!--<menuitem id="hospital_test_staff" name="Staff" action="action_arc_employee" parent="hospital_test" sequence="10"/>-->
+
+
+</odoo>

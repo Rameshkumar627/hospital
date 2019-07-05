@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_doctor_timings_tree" model="ir.ui.view">
+        <field name="name">doctor.timings.tree</field>
+        <field name="model">doctor.timings</field>
+        <field name="arch" type="xml">
+            <tree string="Doctor Timings">
+                <field name="doctor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_doctor_timings_form" model="ir.ui.view">
+        <field name="name">doctor.timings.form</field>
+        <field name="model">doctor.timings</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Timings">
+                <sheet>
+                    <group col="4">
+                        <field name="doctor_id"/>
+                        <field name="id" invisible="1"/>
+                    </group>
+                    <field name="timings_ids">
+                        <tree editable="bottom">
+                            <field name="day"/>
+                            <field name="from_morning" widget="float_time"/>
+                            <field name="till_morning" widget="float_time"/>
+                            <field name="from_evening" widget="float_time"/>
+                            <field name="till_evening" widget="float_time"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_doctor_timings" model="ir.actions.act_window">
+        <field name="name">Doctor Timings</field>
+        <field name="res_model">doctor.timings</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

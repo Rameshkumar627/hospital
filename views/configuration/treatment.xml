@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_treatment_tree" model="ir.ui.view">
+        <field name="name">arc.treatment.tree</field>
+        <field name="model">arc.treatment</field>
+        <field name="arch" type="xml">
+            <tree string="Treatment">
+                <field name="name"/>
+                <field name="treatment_uid"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_treatment_form" model="ir.ui.view">
+        <field name="name">arc.treatment.form</field>
+        <field name="model">arc.treatment</field>
+        <field name="arch" type="xml">
+            <form string="Treatment">
+                <sheet>
+                    <group col="4">
+                        <field name="name"/>
+                        <field name="treatment_uid"/>
+                    </group>
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_treatment" model="ir.actions.act_window">
+        <field name="name">Treatment</field>
+        <field name="res_model">arc.treatment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

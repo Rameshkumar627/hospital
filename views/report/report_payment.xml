@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form -->
+    <record id="view_report_payment_form" model="ir.ui.view">
+        <field name="name">report.payment.form</field>
+        <field name="model">report.payment</field>
+        <field name="arch" type="xml">
+            <form string="Payment">
+                <sheet>
+                    <group col="4">
+                        <field name="from_date"/>
+                        <field name="till_date"/>
+                        <field name="person_id"/>
+                    </group>
+
+                    <field name="detail_ids">
+                        <tree>
+                            <field name="date"/>
+                            <field name="name"/>
+                            <field name="person_id"/>
+                            <field name="amount"/>
+                        </tree>
+                    </field>
+                    <button name="trigger_report" string="Report" type="object"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_report_payment" model="ir.actions.act_window">
+        <field name="name">Payment</field>
+        <field name="res_model">report.payment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="arc_template_pharmacy" model="arc.template">
+            <field name="name">Pharmacy</field>
+            <field name="template_uid">PHARMACY</field>
+            <field name="template"><![CDATA[
+		<div id="company_body">
+    <div class="company_item">
+        <div class="company_item logo">
+            <img src="{company_logo}"/>
+        </div>
+        <div class="company_item address">
+            <div id="company_detail">
+                <div id="company_name"><h3>{company_name}</h3></div>
+                <div id="company_address">{company_address}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="company_info">
+    <div class="content_header">
+        <table>
+            <tr><td>Patient Name</td><td>{patient_name}</td></tr>
+            <tr><td>Patient Id</td><td>{patient_id}</td></tr>
+            <tr><td>Address</td><td>{patient_address}</td><tr>
+        </table>
+    </div>
+    <div class="content_info">
+        <h3>PHARMACY BILL</h3>
+        <br>{info_no}</br>
+        <br>Date: {info_date}</br>
+    </div>
+</div>
+
+			<div class="company_item">
+				<table>
+					<tr><th>Medicine</th>
+                        <th>Price (INR)</th>
+                        <th>Quantity</th>
+                        <th>Discount (%)</th>
+                        <th>Tax (%)</th>
+						<th>Total (INR)</th></tr>
+					{data_table}
+				</table>
+                <br>
+                <br>
+                <div style="float: left; width: 40%;">
+                    <table>
+                        <tr>
+                            <th>sgst</th>
+                            <th>cgst</th>
+                            <th>igst</th>
+                        </tr>
+                        <tr>
+                            <td align="right">{sgst}</td>
+                            <td align="right">{cgst}</td>
+                            <td align="right">{igst}</td>
+                        </tr>
+                    </table>
+                    <br></br>
+                </div>
+                <div style="float: right; width: 40%;">
+                    <table>
+                        <tr>
+                            <th>Sub Total</th>
+                            <td align="right">{sub_total_amount}</td>
+                        </tr>
+                        <tr>
+                            <th>Discount</th>
+                            <td align="right">{discount_amount}</td>
+                        </tr>
+                        <tr>
+                            <th>Tax</th>
+                            <td align="right">{tax_amount}</td>
+                        </tr>
+                        <tr>
+                            <th>Round-Off</th>
+                            <td align="right">{round_off}</td>
+                        </tr>
+                        <tr>
+                            <th style="font-size: 25px">Grand Total</th>
+                            <td align="right" style="font-size: 25px"><b>{grand_amount}</b></td>
+                        </tr>
+                    </table>
+                </div>
+			</div>
+		</div>
+
+]]></field>
+        </record>
+
+    </data>
+</odoo>

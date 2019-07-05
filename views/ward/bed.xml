@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_bed_tree" model="ir.ui.view">
+        <field name="name">arc.bed.tree</field>
+        <field name="model">arc.bed</field>
+        <field name="arch" type="xml">
+            <tree string="Bed">
+                <field name="name"/>
+                <field name="bed_uid"/>
+                <field name="ward_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_bed_form" model="ir.ui.view">
+        <field name="name">arc.bed.form</field>
+        <field name="model">arc.bed</field>
+        <field name="arch" type="xml">
+            <form string="Bed">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="bed_uid"/>
+                        <field name="ward_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_bed" model="ir.actions.act_window">
+        <field name="name">Bed</field>
+        <field name="res_model">arc.bed</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

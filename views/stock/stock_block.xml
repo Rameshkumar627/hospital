@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_stock_block_tree" model="ir.ui.view">
+        <field name="name">stock.block.tree</field>
+        <field name="model">stock.block</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Block">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="progress"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_stock_block_form" model="ir.ui.view">
+        <field name="name">stock.block.form</field>
+        <field name="model">stock.block</field>
+        <field name="arch" type="xml">
+            <form string="Stock Block">
+                <header>
+                    <button name="trigger_confirm" string="Confirm" type="object"
+                            attrs="{'invisible': [('progress', '!=', 'draft')]}"/>
+                    <button name="trigger_approve" string="Approve" type="object"
+                            attrs="{'invisible': [('progress', '!=', 'confirm')]}"/>
+                    <field name="progress" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="date" attrs="{'readonly': [('progress', '!=', 'draft')]}"/>
+                        <field name="id" invisible="1"/>
+                    </group>
+
+                    <field name="block_ids" attrs="{'readonly': [('progress', '!=', 'draft')]}">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <field name="batch_id"/>
+                            <field name="manufacturing_date"/>
+                            <field name="expiry_date"/>
+                            <field name="unit_price"/>
+                            <field name="mrp"/>
+                            <field name="quantity"/>
+                        </tree>
+                    </field>
+                    <field name="comment" placeholder="Comment.." attrs="{'readonly': [('progress', '=', 'approve')]}"/>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_stock_block" model="ir.actions.act_window">
+        <field name="name">Stock Block</field>
+        <field name="res_model">stock.block</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

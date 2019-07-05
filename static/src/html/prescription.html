@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#company_body {{
+	padding:15px;
+	-webkit-flex: 1;
+	-webkit-flex-direction: column;
+}}
+
+.company_item {{
+	-webkit-flex: 1;
+	-webkit-flex-direction: row;
+}}
+
+img {{
+   	width: 100px;
+   	height: 100px;
+}}
+
+#company_detail {{
+	width: 100%;
+	text-align: center;
+}}
+
+.content_header {{
+	width: 50%;
+	text-align: left;
+}}
+
+.content_info {{
+	width: 50%;
+	text-align: right;
+}}
+
+br:before {{ content: "\A"; white-space: pre-line }}
+
+
+</style>
+</head>
+	<body>
+		<div id="company_body">
+			<div class="company_item">
+				<img src="{company_logo}"/>
+				<div id="company_detail">
+					<div id="company_name"><h3>{company_name}</h3></div>
+					<div id="company_address">{company_address}</div>
+				</div>
+			</div>
+
+			<div class="company_item">
+				<div class="content_header">
+					<table>
+						<tr><td>Patient Name</td><td>{patient_name}</td></tr>
+						<tr><td>Patient Id</td><td>{patient_id}</td></tr>
+						<tr><td>Address</td><td>{patient_address}<td><tr>
+					</table>
+				</div>
+				<div class="content_info">
+					<h3>Pharmacy Bill</h3>
+					<br>{info_no}</br>
+					<br>Date: {info_date}</br>
+				</div>
+			</div>
+
+			<div class="company_item">
+				<table>
+					<tr><th>Item</th>
+                        <th>Price (INR)</th>
+                        <th>Quantity</th>
+                        <th>Discount (%)</th>
+                        <th>Tax (%)</th>
+						<th>Total</th></tr>
+					{data_table}
+				</table>
+			</div>
+		</div>
+
+	</body>
+</html>

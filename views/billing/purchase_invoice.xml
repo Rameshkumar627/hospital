@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_invoice_purchase_tree" model="ir.ui.view">
+        <field name="name">arc.invoice.tree</field>
+        <field name="model">arc.invoice</field>
+        <field name="arch" type="xml">
+            <tree string="Purchase Invoice">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="person_id"/>
+                <field name="grand_amount"/>
+                <field name="progress"/>
+                <field name="payment_progress"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_invoice_purchase_form" model="ir.ui.view">
+        <field name="name">arc.invoice.form</field>
+        <field name="model">arc.invoice</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Invoice">
+                <header>
+                    <button name="trigger_approve" string="Approve" type="object"
+                            attrs="{'invisible': [('progress', '!=', 'confirmed')]}"/>
+                    <button name="trigger_confirm" string="Confirm" type="object"
+                            attrs="{'invisible': [('progress', '!=', 'draft')]}"/>
+                    <button name="trigger_register_payment" string="Register Payment" type="object"
+                            attrs="{'invisible': [('progress', '!=', 'approved')]}"/>
+                    <button name="trigger_purchase_invoice" string="PDF" type="object"
+                            attrs="{'invisible': [('progress', '!=', 'approved')]}"/>
+                    <field name="progress" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="date" attrs="{'readonly': [('progress', '!=', 'draft')]}"/>
+                        <field name="person_id" attrs="{'readonly': [('progress', '!=', 'draft')]}" string="Vendor"/>
+                        <field name="payment_progress"/>
+                        <field name="invoice_type" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Purchase Detail">
+                            <field name="detail_ids" attrs="{'readonly': [('progress', '!=', 'draft')]}">
+                                <tree editable="bottom">
+                                    <field name="product_id" required="1"/>
+                                    <field name="batch_id" domain="[('product_id', '=', product_id)]" required="1"/>
+                                    <field name="manufacturing_date" invisible="1"/>
+                                    <field name="expiry_date" required="1"/>
+                                    <field name="unit_price" required="1"/>
+                                    <field name="mrp" required="1"/>
+                                    <field name="quantity" required="1"/>
+                                    <field name="discount" required="1" string="Discount (%)"/>
+                                    <field name="tax_id" string="Tax (%)"/>
+                                    <field name="total" readonly="1" string="Total (INR)"/>
+                                </tree>
+                            </field>
+                            <group>
+                                <div style="float: left; width: 100%;">
+                                    <table id="time_bar">
+                                        <tr>
+                                            <th>sgst</th>
+                                            <th>cgst</th>
+                                            <th>igst</th>
+                                        </tr>
+                                        <tr>
+                                            <td align="right"><field name="sgst" nolabel="1" readonly="1"/></td>
+                                            <td align="right"><field name="cgst" nolabel="1" readonly="1"/></td>
+                                            <td align="right"><field name="igst" nolabel="1" readonly="1"/></td>
+                                        </tr>
+                                    </table>
+                                    <br></br>
+                                </div>
+
+                                <div style="float: right; width: 70%;">
+                                    <table id="time_bar">
+                                        <tr>
+                                            <th>Sub Total</th>
+                                            <td align="right"><field name="sub_total_amount" nolabel="1" readonly="1"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Discount</th>
+                                            <td align="right"><field name="discount_amount" nolabel="1" readonly="1"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tax</th>
+                                            <td align="right"><field name="tax_amount" nolabel="1" readonly="1"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Round-Off</th>
+                                            <td align="right"><field name="round_off" nolabel="1" readonly="1"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="font-size: 25px">Grand Total <button name="trigger_update_total" class="fa fa-refresh" type="object" style="background-color: transparent;"/></th>
+                                            <td align="right" style="font-size: 25px"><b><field name="grand_amount" nolabel="1" readonly="1"/></b></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </group>
+                        </page>
+                        <page string="Payment Detail">
+                            <field name="payment_ids" readonly="1">
+                                <tree>
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                    <field name="transaction_type"/>
+                                    <field name="person_id" invisible="1"/>
+                                    <field name="transaction_category" invisible="1"/>
+                                    <field name="ref" invisible="1"/>
+                                    <field name="invoice_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_invoice_purchase" model="ir.actions.act_window">
+        <field name="name">Purchase Invoice</field>
+        <field name="res_model">arc.invoice</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('invoice_type', '=', 'purchase')]</field>
+        <field name="context">{'default_invoice_type': 'purchase'}</field>
+        <field name="view_id" ref="view_arc_invoice_purchase_tree"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_invoice_purchase_form">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_arc_invoice_purchase_form" />
+        <field name="act_window_id" ref="action_arc_invoice_purchase"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_invoice_purchase_tree">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_arc_invoice_purchase_tree"/>
+        <field name="act_window_id" ref="action_arc_invoice_purchase"/>
+    </record>
+
+
+</odoo>

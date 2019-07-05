@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="arc_template_prescrip_table" model="arc.template">
+            <field name="name">Prescrip Table</field>
+            <field name="template_uid">PRESCRIPTION TABLE</field>
+            <field name="template"><![CDATA[
+		<div class="company_item">
+            <table>
+                <tr><th>Medicine</th>
+                    <th>Morning</th>
+                    <th>Noon</th>
+                    <th>Evening</th>
+                    <th>Consumption</th>
+                    <th>Quantity</th></tr>
+                {data_table}
+            </table>
+            <br>
+            <br>
+
+		</div>
+
+]]></field>
+        </record>
+
+    </data>
+</odoo>

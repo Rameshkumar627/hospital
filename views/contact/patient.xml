@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Action Patient-->
+    <record id="action_arc_person_patient" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">arc.person</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_patient', '=', True)]</field>
+        <field name="view_id" ref="view_arc_person_contact_tree"/>
+        <field name="help">Click create to add new patient's</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_person_patient_form">
+        <field eval="3" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_arc_person_contact_form" />
+        <field name="act_window_id" ref="action_arc_person_patient"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_person_patient_tree">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_arc_person_contact_tree"/>
+        <field name="act_window_id" ref="action_arc_person_patient"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_person_patient_kanban">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="view_arc_person_contact_kanban"/>
+        <field name="act_window_id" ref="action_arc_person_patient"/>
+    </record>
+
+</odoo>

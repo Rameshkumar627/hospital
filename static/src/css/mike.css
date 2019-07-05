@@ -1,0 +1,68 @@
+.card {
+    background: #FFFFFF;
+    width: 300px;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.card-header {
+    position: relative;
+    background: #303841;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    overflow: hidden;
+    float: left;
+    margin: 10px;
+}
+
+.card-content {
+    text-align: left;
+    padding: 20px 10px 40px 20px;
+}
+
+.card-content__username {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 10px;
+
+}
+
+.mati {
+    width: 40%;
+
+}
+
+.card-content__bio {
+    color: #666666;
+    font-size: 12px;
+    padding: 0 10px;
+
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background: #F3F3F3;
+    padding: 15px 40px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-footer .label {
+    display: block;
+    margin: 4px 0 0;
+    color: #666666;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.card-content-small-image >.oe_module_icon { padding: 0px 10px 0px 0px;}

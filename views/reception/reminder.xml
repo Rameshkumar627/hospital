@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_reminder_tree" model="ir.ui.view">
+        <field name="name">arc.reminder.tree</field>
+        <field name="model">arc.reminder</field>
+        <field name="arch" type="xml">
+            <tree string="Reminder">
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="reminder"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_reminder_form" model="ir.ui.view">
+        <field name="name">arc.reminder.form</field>
+        <field name="model">arc.reminder</field>
+        <field name="arch" type="xml">
+            <form string="Reminder">
+                <sheet>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="employee_id"/>
+                    </group>
+                    <field name="reminder" placeholder="Reminder.."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- calendar -->
+    <record id="view_arc_reminder_my_calendar" model="ir.ui.view">
+        <field name="name">arc.reminder.calendar</field>
+        <field name="model">arc.reminder</field>
+        <field name="arch" type="xml">
+            <calendar string="Reminder"
+                      color="employee_id"
+                      date_start="date"
+                      mode="month"
+                      quick_add="False" create="false" edit="false" delete="false">
+                <field name="employee_id"/>
+                <field name="reminder"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_reminder" model="ir.actions.act_window">
+        <field name="name">Reminder</field>
+        <field name="res_model">arc.reminder</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">calendar,tree,form</field>
+    </record>
+
+</odoo>

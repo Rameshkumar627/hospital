@@ -1,0 +1,57 @@
+#company_body {
+	padding:15px;
+
+}
+
+.company_item.logo{
+   float: left;
+
+}
+
+.company_item.address {
+    text-align: center;
+}
+
+
+img {
+   	width: 100px;
+   	height: 100px;
+}
+
+.content_header {
+    float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.content_info {
+	text-align: right;
+}
+
+br:before { content: "\A"; white-space: pre-line }
+
+
+
+
+.company_item table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.company_item table td, .company_item table th {
+    border: 3px solid #ddd;
+    padding: 8px;
+}
+
+.company_item table tr:nth-child(even){background-color: #f2f2f2;}
+
+.company_item table tr:hover {background-color: #ddd;}
+
+.company_item table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

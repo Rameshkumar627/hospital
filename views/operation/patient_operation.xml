@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_patient_operation_tree" model="ir.ui.view">
+        <field name="name">patient.operation.tree</field>
+        <field name="model">patient.operation</field>
+        <field name="arch" type="xml">
+            <tree string="Operation">
+                <field name="name"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_patient_operation_calendar" model="ir.ui.view">
+        <field name="name">patient.operation.calendar</field>
+        <field name="model">patient.operation</field>
+        <field name="arch" type="xml">
+            <calendar string="Operation"
+                      color="patient_id"
+                      date_start="operation_date"
+                      mode="month"
+                      quick_add="False">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="operation_id"/>
+            </calendar>
+        </field>
+    </record>
+
+
+    <!-- Form -->
+    <record id="view_patient_operation_form" model="ir.ui.view">
+        <field name="name">patient.operation.form</field>
+        <field name="model">patient.operation</field>
+        <field name="arch" type="xml">
+            <form string="Operation">
+                <header>
+                    <button name="trigger_ot_booked" string="OT Booked" type="object" attrs="{'invisible': [('progress', '!=', 'draft')]}"/>
+                    <button name="trigger_done" string="Done" type="object" attrs="{'invisible': [('progress', '!=', 'ot_booked')]}"/>
+                    <button name="trigger_cancel" string="Cancel" type="object" attrs="{'invisible': [('progress', '=', 'cancel')]}"/>
+                    <field name="progress" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="patient_id"/>
+                        <field name="operation_id"/>
+                        <field name="doctor_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Operation Detail">
+                            <group col="4">
+                                <field name="operation_date"/>
+                                <field name="ot_id"/>
+                                <field name="procedure"/>
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <field name="comment" placeholder="Comment..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_patient_operation" model="ir.actions.act_window">
+        <field name="name">Operation</field>
+        <field name="res_model">patient.operation</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_patient_operation_ot_status" model="ir.actions.act_window">
+        <field name="name">OT Status</field>
+        <field name="res_model">patient.operation</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+
+
+</odoo>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_patient_tree" model="ir.ui.view">
+        <field name="name">arc.patient.tree</field>
+        <field name="model">arc.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient">
+                <field name="name"/>
+                <field name="patient_uid"/>
+                <field name="email"/>
+                <field name="mobile"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_patient_form" model="ir.ui.view">
+        <field name="name">arc.patient.form</field>
+        <field name="model">arc.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="action_view_bill" class="oe_stat_button" string="Bills" icon="fa-truck"/>
+                        <button type="object" name="action_view_appointment" class="oe_stat_button" string="Appointment" icon="fa-book"/>
+                        <button type="object" name="action_view_treatment" class="oe_stat_button" string="Treatment" icon="fa-stethoscope"/>
+                    </div>
+
+                    <div>
+                        <field name="image" widget="image" class="oe_avatar oe_left"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" class="oe_inline" modifiers="{'required': true}"/></h1>
+                            <h2><field name="patient_uid"/></h2>
+                        </div>
+                    </div>
+                    <group col="4">
+                        <field name="email"/>
+                        <field name="mobile"/>
+                        <field name="phone"/>
+                        <field name="whatsapp"/>
+                    </group>
+                    <notebook>
+                        <page string="Contact Details">
+                            <group>
+                                <group string="Address">
+                                    <field name="door_no" style="width: 30%" placeholder="Door No..."/>
+                                    <field name="building_name" style="width: 70%" placeholder="Building name..."/>
+                                    <field name="street_1" placeholder="Street 1..."/>
+                                    <field name="street_2" placeholder="Street 2..."/>
+                                    <field name="locality" placeholder="Locality..."/>
+                                    <field name="city" placeholder="City..."/>
+                                    <field name="landmark" placeholder="Landmark..."/>
+                                    <field name="country_id" style="width: 45%" placeholder="Country" options="{'create': false, 'create_edit': false}" modifiers="{}"/>
+                                    <field name="state_id" style="width: 55%" options="{'create': false, 'create_edit': false}" placeholder="State" modifiers="{}"/>
+                                    <field name="pin_code" placeholder="ZIP" style="width: 55%"/>
+                                </group>
+                                <group string="Alternate Contact">
+                                    <field name="alternate_contact_name"/>
+                                    <field name="alternate_contact_relation"/>
+                                    <field name="alternate_mobile"/>
+                                    <field name="alternate_address"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Identities">
+                            <field name="identity_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="reference"/>
+                                    <field name="attachment_ids" widget="many2many_binary"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Personnel Details">
+                            <group col="4">
+                                <field name="age"/>
+                                <field name="blood_group"/>
+                                <field name="marital_status"/>
+                                <field name="gender"/>
+                                <field name="caste"/>
+                                <field name="religion_id"/>
+                                <field name="physically_challenged"/>
+                                <field name="nationality_id"/>
+                                <field name="mother_tongue_id"/>
+                                <field name="language_known_ids" widget="many2many_tags"/>
+                            </group>
+                            <field name="family_member_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="relation"/>
+                                    <field name="mobile"/>
+                                    <field name="email"/>
+                                </tree>
+                                <form>
+                                    <group col="4">
+                                        <field name="name"/>
+                                        <field name="relation"/>
+                                        <field name="mobile"/>
+                                        <field name="email"/>
+                                    </group>
+                                    <group>
+                                        <group>
+                                        <label for="street" string="Address"/>
+                                        <div>
+                                            <div class="address_format">
+                                                <field name="door_no" style="width: 30%" placeholder="Door No..."/>
+                                                <field name="building_name" style="width: 70%" placeholder="Building name..."/>
+                                            </div>
+                                            <field name="street_1" placeholder="Street 1..."/>
+                                            <field name="street_2" placeholder="Street 2..."/>
+                                            <field name="locality" placeholder="Locality..."/>
+                                            <field name="city" placeholder="City..."/>
+                                            <field name="landmark" placeholder="Landmark..."/>
+                                            <div class="address_format">
+                                                <field name="country_id" style="width: 45%" placeholder="Country" options="{'create': false, 'create_edit': false}" modifiers="{}"/>
+                                                <field name="state_id" style="width: 55%" options="{'create': false, 'create_edit': false}" placeholder="State" modifiers="{}"/>
+                                            </div>
+                                            <field name="pin_code" placeholder="ZIP" style="width: 55%"/>
+                                        </div>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Medical Detail">
+                            <group>
+                                <field name="allergic_towards"/>
+                            </group>
+                        </page>
+                        <page string="Attachments">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Kanban -->
+    <record id="view_arc_patient_kanban" model="ir.ui.view">
+        <field name="name">arc.patient.kanban</field>
+        <field name="model">arc.patient</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="image"/>
+                <field name="name"/>
+                <field name="patient_uid"/>
+                <field name="mobile"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click card">
+
+                            <div class="card-content-small">
+
+                                <!-- Header -->
+                                <div class="card-content-small-image">
+                                    <t t-if="record.image.value">
+                                        <img t-attf-src="data:image/png;base64, #{record.image.value}" class="oe_module_icon"/>
+                                    </t>
+                                </div>
+
+                                <!-- Content-->
+                                <table class="mati">
+                                    <tr><th>Name</th><td>&#160;&#160;<field name="name"/></td></tr>
+                                    <tr><th>ID</th><td>&#160;&#160;<field name="patient_uid"/></td></tr>
+                                    <tr><th>Mobile  </th><td>&#160;&#160;<field name="mobile"/></td></tr>
+                                    <tr><th>Phone</th><td>&#160;&#160;<field name="phone"/></td></tr>
+                                </table>
+
+                            </div>
+
+                            <!-- Footer-->
+                            <!--<div class="card-footer">-->
+                                <!--<div class="card-footer__pens">-->
+                                    <!--<span><field name="mobile"/></span> <div class="label">Mobile</div>-->
+                                <!--</div>-->
+                                <!--<div class="card-footer__followers">-->
+                                    <!--<span><field name="phone"/></span> <div class="label">Phone</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                    </t>
+              </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_arc_patient" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">arc.patient</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help">Click create to add new patient's</field>
+    </record>
+
+</odoo>

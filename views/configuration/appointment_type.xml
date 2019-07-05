@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_appointment_type_tree" model="ir.ui.view">
+        <field name="name">appointment.type.tree</field>
+        <field name="model">appointment.type</field>
+        <field name="arch" type="xml">
+            <tree string="Appointment Type">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_appointment_type_form" model="ir.ui.view">
+        <field name="name">appointment.type.form</field>
+        <field name="model">appointment.type</field>
+        <field name="arch" type="xml">
+            <form string="Appointment Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_appointment_type" model="ir.actions.act_window">
+        <field name="name">Appointment Type</field>
+        <field name="res_model">appointment.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

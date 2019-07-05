@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_operation_theater_tree" model="ir.ui.view">
+        <field name="name">operation.theater.tree</field>
+        <field name="model">operation.theater</field>
+        <field name="arch" type="xml">
+            <tree string="Operation Theater">
+                <field name="name"/>
+                <field name="theater_uid"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_operation_theater_form" model="ir.ui.view">
+        <field name="name">operation.theater.form</field>
+        <field name="model">operation.theater</field>
+        <field name="arch" type="xml">
+            <form string="Operation Theater">
+                <sheet>
+                    <div>
+                        <field name="image" widget="image" class="oe_avatar oe_left"/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" class="oe_inline" modifiers="{'required': true}"/></h1>
+                            <label for="theater_uid" class="oe_edit_only"/>
+                            <h2><field name="theater_uid" class="oe_inline" modifiers="{'required': true}"/></h2>
+                        </div>
+                    </div>
+
+                    <group col="4">
+                        <field name="supervisor_id"/>
+                        <field name="attachment_ids" widget="many2many_binary"/>
+                    </group>
+                    <notebook>
+                        <page string="Theater Facility">
+                            <field name="theater_facility"/>
+                        </page>
+                        <page string="Operation">
+                            <field name="operation_ids" mode="kanban" readonly="1">
+                                <kanban>
+                                    <field name="operation_date"/>
+                                    <field name="name"/>
+                                    <field name="patient_id"/>
+                                    <field name="operation_id"/>
+                                    <field name="doctor_id"/>
+
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click card">
+                                                <!-- Content-->
+                                                <div class="card-content">
+                                                    <table>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <td><field name="operation_date"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Patient</th>
+                                                            <td><field name="patient_id"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Operation</th>
+                                                            <td><field name="operation_id"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Doctor</th>
+                                                            <td><field name="doctor_id"/></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </t>
+                                  </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_operation_theater" model="ir.actions.act_window">
+        <field name="name">Operation Theater</field>
+        <field name="res_model">operation.theater</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

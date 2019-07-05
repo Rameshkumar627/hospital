@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_move_tree" model="ir.ui.view">
+        <field name="name">arc.move.tree</field>
+        <field name="model">arc.move</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Move">
+                <field name="date"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_move_form" model="ir.ui.view">
+        <field name="name">arc.move.form</field>
+        <field name="model">arc.move</field>
+        <field name="arch" type="xml">
+            <form string="Stock Move">
+                <header>
+                    <field name="progress" widget="statusbar"/>
+                </header>
+                <sheet>
+
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="product_id"/>
+                        <field name="batch_id"/>
+                        <field name="description"/>
+                        <field name="quantity"/>
+                        <field name="source_id"/>
+                        <field name="destination_id"/>
+                    </group>
+                    <field name="comment"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_move" model="ir.actions.act_window">
+        <field name="name">Stock Move</field>
+        <field name="res_model">arc.move</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

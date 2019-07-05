@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_ipd_treatment_tree" model="ir.ui.view">
+        <field name="name">ipd.treatment.tree</field>
+        <field name="model">ipd.treatment</field>
+        <field name="arch" type="xml">
+            <tree string="In Patient Treatment">
+                <field name="name"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_ipd_treatment_form" model="ir.ui.view">
+        <field name="name">ipd.treatment.form</field>
+        <field name="model">ipd.treatment</field>
+        <field name="arch" type="xml">
+            <form string="In Patient Treatment">
+                <header>
+                    <button name="trigger_register_payment" string="Register Payment" type="object"/>
+                    <button name="trigger_report" string="PDF" type="object"/>
+                </header>
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <field name="image" widget="image"  class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="patient_id" class="oe_edit_only"/>
+                        <h1>
+                            <field name="patient_id" class="oe_inline"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="doctor_id"/>
+                        <field name="bed_id"/>
+                    </group>
+                    <group string="Diagnosis" col="4">
+                        <field name="diagnosis_ids" widget="many2many_tags"/>
+                        <field name="diagnosis_comment"/>
+                    </group>
+                    <field name="treatment_detail">
+                        <tree>
+                            <field name="date"/>
+                            <field name="diagnosis_ids"/>
+                            <field name="treatment_ids"/>
+                            <field name="comment"/>
+                        </tree>
+                    </field>
+                    <separator string="Prescription"/>
+                        <field name="prescription_ids" mode="kanban" context="{'default_doctor_id': doctor_id,
+                                                                               'default_patient_id': patient_id,
+                                                                               'default_general_treatment_id': id}">
+                            <kanban>
+                                <field name="date"/>
+                                <field name="name"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="oe_kanban_global_click card">
+                                            <!-- Content-->
+                                            <div class="card-content">
+                                                <table>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <td style=""><field name="date"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Prescription</th>
+                                                        <td><field name="name"/></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </t>
+                              </templates>
+                            </kanban>
+                        </field>
+
+                    <group>
+                        <field name="attachment_ids" widget="many2many_binary"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_ipd_treatment" model="ir.actions.act_window">
+        <field name="name">In Patient Treatment</field>
+        <field name="res_model">ipd.treatment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

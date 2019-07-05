@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="arc_template_prescrip" model="arc.template">
+            <field name="name">Prescrip</field>
+            <field name="template_uid">PRESCRIPTION</field>
+            <field name="template"><![CDATA[
+		<div id="company_body">
+    <div class="company_item">
+        <div class="company_item logo">
+            <img src="{company_logo}"/>
+        </div>
+        <div class="company_item address">
+            <div id="company_detail">
+                <div id="company_name"><h3>{company_name}</h3></div>
+                <div id="company_address">{company_address}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="company_info">
+    <div class="content_header">
+        <table>
+            <tr><td>Patient Name</td><td>{patient_name}</td></tr>
+            <tr><td>Patient Id</td><td>{patient_id}</td></tr>
+            <tr><td>Address</td><td>{patient_address}</td><tr>
+        </table>
+    </div>
+    <div class="content_info">
+        <h3>PHARMACY BILL</h3>
+        <br>{info_no}</br>
+        <br>Date: {info_date}</br>
+    </div>
+</div>
+
+			<div class="company_item">
+				<table>
+					<tr><th>Medicine</th>
+                        <th>Morning</th>
+                        <th>Noon</th>
+                        <th>Evening</th>
+                        <th>Consumption</th>
+						<th>Quantity</th></tr>
+					{data_table}
+				</table>
+                <br>
+                <br>
+
+			</div>
+		</div>
+
+]]></field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="arc_template_opd" model="arc.template">
+            <field name="name">opd</field>
+            <field name="template_uid">OPD</field>
+            <field name="template"><![CDATA[
+		<div id="company_body">
+    <div class="company_item">
+        <div class="company_item logo">
+            <img src="{company_logo}"/>
+        </div>
+        <div class="company_item address">
+            <div id="company_detail">
+                <div id="company_name"><h3>{company_name}</h3></div>
+                <div id="company_address">{company_address}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="company_info">
+    <div class="content_header">
+        <table>
+            <tr><td>Doctor </td><td>{doctor_name}</td></tr>
+            <tr><td>Patient </td><td>{patient_name}</td></tr>
+            <tr><td>Patient Id</td><td>{patient_id}</td></tr>
+            <tr><td>Address</td><td>{patient_address}</td><tr>
+        </table>
+    </div>
+    <div class="content_info">
+        <h3>OPD Treatment</h3>
+        <br>{info_no}</br>
+        <br>Date: {info_date}</br>
+    </div>
+</div>
+
+    <table>
+        <tr><td style="width: 100px;">Symptoms</td><td>{symptoms}</td></tr>
+        <tr><td>Diagnosis</td><td>{diagnosis}</td></tr>
+        <tr><td></td><td>{diagnosis_comment}</td></tr>
+        <tr><td>Treatment</td><td>{treatment}</td></tr>
+        <tr><td></td><td>{treatment_comment}</td></tr>
+    </table>
+
+        {prescription_data}
+
+			</div>
+		</div>
+
+]]></field>
+        </record>
+
+    </data>
+</odoo>

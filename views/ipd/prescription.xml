@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_arc_prescription_ipd_tree" model="ir.ui.view">
+        <field name="name">arc.prescription.ipd.tree</field>
+        <field name="model">arc.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="Prescription">
+                <field name="date"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_arc_prescription_ipd_form" model="ir.ui.view">
+        <field name="name">arc.prescription.ipd.form</field>
+        <field name="model">arc.prescription</field>
+        <field name="arch" type="xml">
+            <form string="Prescription">
+                <header>
+                    <button name="trigger_prescription" string="PDF" type="object"/>
+                    <button name="trigger_generate_pharmacy_invoice" string="Generate Pharmacy Bill" type="object"/>
+                </header>
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="general_treatment_id" invisible="1"/>
+                        <field name="ipd_treatment_id"/>
+                        <field name="doctor_id"/>
+                        <field name="patient_id"/>
+                        <field name="report_pdf" filename="file_name" invisible="1"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <field name="prescription_ids">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <field name="morning"/>
+                            <field name="noon"/>
+                            <field name="evening"/>
+                            <field name="consumption_type"/>
+                            <field name="quantity"/>
+                        </tree>
+                    </field>
+                    <field name="comment" placeholder="Comment..."/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_arc_prescription_ipd" model="ir.actions.act_window">
+        <field name="name">Prescription</field>
+        <field name="res_model">arc.prescription</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('ipd_treatment_id', '!=', False)]</field>
+        <field name="view_id" ref="view_arc_prescription_ipd_tree"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_prescription_ipd_form">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_arc_prescription_ipd_form" />
+        <field name="act_window_id" ref="action_arc_prescription_ipd"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="action_arc_prescription_ipd_tree">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_arc_prescription_ipd_tree"/>
+        <field name="act_window_id" ref="action_arc_prescription_ipd"/>
+    </record>
+
+
+</odoo>

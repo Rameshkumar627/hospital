@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record model="ir.rule" id="hospital_arc_admission">
+            <field name="name">Admission</field>
+            <field name="model_id" ref="model_arc_admission"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_arc_discharge">
+            <field name="name">Discharge</field>
+            <field name="model_id" ref="model_arc_discharge"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_ipd_treatment">
+            <field name="name">IPD Treatment</field>
+            <field name="model_id" ref="model_ipd_treatment"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+        <record model="ir.rule" id="hospital_ipd_treatment_detail">
+            <field name="name">IPD Treatment Detail</field>
+            <field name="model_id" ref="model_ipd_treatment_detail"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id', '=', False),
+                                            ('company_id', 'child_of', [user.company_id.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('hospital.group_hospital_user'))]"/>
+        </record>
+
+    </data>
+
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_general_treatment_tree" model="ir.ui.view">
+        <field name="name">general.treatment.tree</field>
+        <field name="model">general.treatment</field>
+        <field name="arch" type="xml">
+            <tree string="Treatment">
+                <field name="date"/>
+                <field name="patient_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_general_treatment_form" model="ir.ui.view">
+        <field name="name">general.treatment.form</field>
+        <field name="model">general.treatment</field>
+        <field name="arch" type="xml">
+            <form string="Treatment">
+                <header>
+                    <button name="trigger_register_payment" string="Register Payment" type="object"/>
+                    <button name="trigger_report" string="PDF" type="object"/>
+                </header>
+                <sheet>
+                    <h2><field name="name"/></h2>
+                    <group col="4">
+                        <field name="date"/>
+                        <field name="patient_id"/>
+                        <field name="doctor_id"/>
+                    </group>
+                    <button name="generate_report" string="Report" type="object"/>
+                    <notebook>
+                        <page string="Treatment">
+                            <group col="4">
+                                <field name="symptoms_ids" widget="many2many_tags"/>
+                                <field name="diagnosis_ids" widget="many2many_tags"/>
+                                <field name="id" invisible="1"/>
+                                <field name="diagnosis_comment" placeholder="Comment.."/>
+                            </group>
+
+                            <group col="4">
+                                <field name="treatment_ids" widget="many2many_tags"/>
+                                <field name="treatment_comment" placeholder="Comment.."/>
+                            </group>
+
+                            <separator string="Prescription"/>
+                            <field name="prescription_ids" mode="kanban" context="{'default_doctor_id': doctor_id,
+                                                                                   'default_patient_id': patient_id,
+                                                                                   'default_general_treatment_id': id}">
+                                <kanban>
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click card">
+                                                <!-- Content-->
+                                                <div class="card-content">
+                                                    <table>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <td style=""><field name="date"/></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Prescription</th>
+                                                            <td><field name="name"/></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </t>
+                                  </templates>
+                                </kanban>
+                            </field>
+
+                            <group string="Attachment">
+                                <field name="attachment_ids" widget="many2many_binary"/>
+                            </group>
+
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_general_treatment" model="ir.actions.act_window">
+        <field name="name">Treatment</field>
+        <field name="res_model">general.treatment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

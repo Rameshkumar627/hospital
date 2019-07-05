@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="assets_backend" name="mymodule css assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/hospital/static/src/css/time_bar.css"/>
+            <link rel="stylesheet" href="/hospital/static/src/css/matrix.css"/>
+            <link rel="stylesheet" href="/hospital/static/src/css/suchi.css"/>
+            <link rel="stylesheet" href="/hospital/static/src/css/mike.css"/>
+            <link rel="stylesheet" href="/hospital/static/src/css/blek.css"/>
+        </xpath>
+    </template>
+</odoo>

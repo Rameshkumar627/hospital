@@ -1,0 +1,20 @@
+.o_form_view .o_group .o_td_label {border: none}
+.o_form_input_dropdown input[type="text"] {border: 1px solid #ccc;}
+.o_form_input_dropdown input[type="password"] {border: 1px solid #ccc;}
+.o_form_input_dropdown input[type="number"] {border: 1px solid #ccc;}
+.o_form_input_dropdown textarea {border: 1px solid #ccc;}
+.o_form_input_dropdown select {border: 1px solid #ccc;}
+.o_form_input_dropdown .o_form_view.o_form_editable {border: 1px solid #ccc;}
+.o_form_input_dropdown .o_form_field_many2manytags {border: 1px solid #ccc;}
+.o_form_input_dropdown .o_searchview  {border: 1px solid #ccc;}
+//.o_form_view.o_form_editable .o_form_field_many2manytags.o_form_field {border: none;}
+.o_form_view.o_form_editable .o_form_field_many2manytags.o_form_field {border: 1px solid #ccc;}
+.o_form_view.o_form_editable textarea {border: 1px solid #ccc;}
+
+.card-content {
+  box-shadow: 2px 2px 5px 0.5px;
+}
+
+#time_bar th {background-color: #7C7BAD;}
+
+.card-content >table th {padding: 10px;}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree -->
+    <record id="view_admission_reason_tree" model="ir.ui.view">
+        <field name="name">admission.reason.tree</field>
+        <field name="model">admission.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Admission Reason">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_admission_reason_form" model="ir.ui.view">
+        <field name="name">admission.reason.form</field>
+        <field name="model">admission.reason</field>
+        <field name="arch" type="xml">
+            <form string="Admission Reason">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_admission_reason" model="ir.actions.act_window">
+        <field name="name">Admission Reason</field>
+        <field name="res_model">admission.reason</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
