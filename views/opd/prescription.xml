@@ -29,11 +29,11 @@
                     <group col="4">
                         <field name="date"/>
                         <field name="general_treatment_id"/>
-                        <field name="ipd_treatment_id" invisible="1"/>
                         <field name="doctor_id"/>
                         <field name="patient_id"/>
                         <field name="report_pdf" filename="file_name" invisible="1"/>
                         <field name="file_name" invisible="1"/>
+                        <field name="ipd_treatment_id" invisible="1"/>
                     </group>
                     <field name="prescription_ids">
                         <tree editable="bottom">
